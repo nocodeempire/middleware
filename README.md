@@ -17,8 +17,7 @@
         },1000) 
     })
 ```
-
-# 时间中间件 time
+## 时间中间件 time
 ```js
 module.exports = function(ops) {
     var time = ops.time || 100;
