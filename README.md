@@ -23,6 +23,8 @@ module.exports = function(ops) {
     var time = ops.time || 100;
     return function(req, res, next) {
         var timer = setTimeout(function() {
+            // 日志写入文件,但没有做文件的创建,需自己创建文件
+            // require('fs').appendFile('log.txt', "花了太长时间"+req.originalUrl+"\r")
             console.log("花了太长时间",req.method,req.url)
         },time)
         //保持对原始函数的引用(var end = res.end), 然后在重写的函数中恢复原始函数在调用它
