@@ -26,7 +26,8 @@ module.exports = function(ops) {
         var timer = setTimeout(function() {
             console.log("花了太长时间",req.method,req.url)
         },time)
-        var end = res.end;
+        //保持对原始函数的引用(var end = res.end), 然后在重写的函数中恢复原始函数在调用它
+        var end = res.end;
         res.end = function(chunk, encoding) {
             res.end = end;
             clearTimeout(timer);
